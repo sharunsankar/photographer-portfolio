@@ -63,6 +63,16 @@ return [
             ]) : [],
         ],
 
+        'portfolio_user' => [
+            'driver' => 'mysql',
+            'host' => env('USER_DB_HOST', '127.0.0.1'),
+            'port' => env('USER_DB_PORT', '3306'),
+            'database' => env('USER_DB_DATABASE', 'forge'),
+            'username' => env('USER_DB_USERNAME', 'forge'),
+            'password' => env('USER_DB_PASSWORD', ''),
+            // ...
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
