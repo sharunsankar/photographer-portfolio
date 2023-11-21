@@ -9,6 +9,8 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $connection = 'portfolio';
+
     protected $fillable = ['name', 'image', 'description'];
     
 }
