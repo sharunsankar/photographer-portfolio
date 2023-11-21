@@ -9,6 +9,8 @@ class Album extends Model
 {
     use HasFactory;
 
+    protected $connection = 'portfolio';
+
     protected $fillable = ['category_id', 'title', 'cover_image', 'description'];
     
 }

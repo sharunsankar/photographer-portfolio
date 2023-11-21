@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::connection('portfolio')->create('images', function (Blueprint $table) {
             $table->id();
             $table->foreignId('album_id')
                 ->constrained()
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('images');
+        Schema::connection('portfolio')->dropIfExists('images');
     }
 };
