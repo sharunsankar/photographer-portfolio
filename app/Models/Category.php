@@ -11,6 +11,6 @@ class Category extends Model
 
     protected $connection = 'portfolio';
 
-    protected $fillable = ['name', 'image', 'description'];
+    protected $fillable = ['name', 'image', 'description', 'slug'];
     
 }
