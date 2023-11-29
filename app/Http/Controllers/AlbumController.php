@@ -50,7 +50,7 @@ class AlbumController extends Controller
         $input = $request->all();
     	$tags = explode(",", $request->tags);
     	$album = Album::create($input);
-    	//$album->attachTags($tags);
+    	$album->attachTags($tags);
 
         return redirect()->route('albums.index')
         ->withSuccess('New Album is added successfully.');
