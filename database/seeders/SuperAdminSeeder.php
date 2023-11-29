@@ -17,7 +17,7 @@ class SuperAdminSeeder extends Seeder
         // Creating Super Admin User
         $superAdmin = User::create([
             'name' => 'Super Admin', 
-            'email' => 'admin@admin.com',
+            'email' => 'admin@portfolio.com',
             'password' => Hash::make('password1234')
         ]);
         $superAdmin->assignRole('Super Admin');
@@ -25,7 +25,7 @@ class SuperAdminSeeder extends Seeder
         // Creating Editor
         $editor = User::create([
             'name' => 'Editor', 
-            'email' => 'editor@admin.com',
+            'email' => 'editor@portfolio.com',
             'password' => Hash::make('password1234')
         ]);
         $editor->assignRole('Editor');
@@ -33,7 +33,7 @@ class SuperAdminSeeder extends Seeder
         // Creating Content Manager
         $contentManager = User::create([
             'name' => 'Content Manager', 
-            'email' => 'content-manager@admin.com',
+            'email' => 'content-manager@portfolio.com',
             'password' => Hash::make('password1234')
         ]);
         $contentManager->assignRole('Content Manager');

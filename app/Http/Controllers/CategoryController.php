@@ -48,7 +48,7 @@ class CategoryController extends Controller
         $input = $request->all();
     
         if ($image = $request->file('image')) {
-            $destinationPath = public_path('images');
+            $destinationPath = public_path('storage');
             $coverImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $coverImage);
             $input['image'] = "$coverImage";
@@ -90,7 +90,7 @@ class CategoryController extends Controller
         $input = $request->all();
     
         if ($image = $request->file('image')) {
-            $destinationPath = public_path('images');
+            $destinationPath = public_path('storage');
             $coverImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $coverImage);
             $input['image'] = "$coverImage";

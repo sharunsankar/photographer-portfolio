@@ -36,7 +36,7 @@
                             @if ($errors->has('image'))
                                 <span class="text-danger">{{ $errors->first('image') }}</span>
                             @endif
-                            <img src="{{ asset( 'images/'. $category->image ) }}" width="300px">
+                            <img src="{{ asset( 'storage/'. $category->image ) }}" width="200px">
                         </div>
                     </div>
 
