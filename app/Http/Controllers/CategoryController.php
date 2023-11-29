@@ -8,6 +8,7 @@ use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -44,7 +45,19 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request): RedirectResponse
     {
-        Category::create($request->all());
+        $input = $request->all();
+    
+        if ($image = $request->file('image')) {
+            $destinationPath = public_path('storage');
+            $coverImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $coverImage);
+            $input['image'] = "$coverImage";
+        }
+
+        $input['slug'] = Str::slug($request->get('name'), '-');
+      
+        Category::create($input);
+
         return redirect()->route('categories.index')
                 ->withSuccess('New category is added successfully.');
     }
@@ -74,7 +87,21 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category): RedirectResponse
     {
-        $category->update($request->all());
+        $input = $request->all();
+    
+        if ($image = $request->file('image')) {
+            $destinationPath = public_path('storage');
+            $coverImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $coverImage);
+            $input['image'] = "$coverImage";
+        }else{
+            unset($input['image']);
+        }
+
+        $input['slug'] = Str::slug($request->get('name'), '-');
+            
+        $category->update($input);
+
         return redirect()->back()
                 ->withSuccess('Category is updated successfully.');
     }

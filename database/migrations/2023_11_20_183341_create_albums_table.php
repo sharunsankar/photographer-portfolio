@@ -17,9 +17,8 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->string('title');
-            $table->string('cover_image');
-            $table->text('description');
+            $table->string('title', 255);
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
