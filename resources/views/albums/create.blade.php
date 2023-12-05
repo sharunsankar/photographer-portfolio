@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="mb-3 row">
-                        <label for="name" class="col-md-4 col-form-label text-md-end text-start">Title</label>
+                        <label for="title" class="col-md-4 col-form-label text-md-end text-start">Title</label>
                         <div class="col-md-6">
                           <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title') }}">
                             @if ($errors->has('title'))
@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="mb-3 row">
-                        <label for="image" class="col-md-4 col-form-label text-md-end text-start">Tags</label>
+                        <label for="tags" class="col-md-4 col-form-label text-md-end text-start">Tags</label>
                         <div class="col-md-6">
                             <input type="text" data-role="tagsinput" name="tags" class="form-control tags">
                             @if ($errors->has('tags'))

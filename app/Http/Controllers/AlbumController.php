@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Album;
+use App\Models\Image;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAlbumRequest;
 use App\Http\Requests\UpdateAlbumRequest;
+use App\Http\Requests\StoreImageRequest;
+use App\Http\Requests\UpdateImageRequest;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 
@@ -91,6 +94,38 @@ class AlbumController extends Controller
      */
     public function destroy(Album $album)
     {
-        //
+        $album->delete();
+        return redirect()->route('albums.index')
+                ->withSuccess('Album is deleted successfully.');
+    }
+
+    /**
+     * Add image to the album
+     */
+    public function addImage(Album $album, $id) {
+
+        return view('albums.addImage', [
+            'id' => $id,
+            'album' => $album
+        ]);
+
+    }
+
+    public function storeImage(StoreImageRequest $request, Image $image): RedirectResponse
+    {
+        $input = $request->all();
+        $input['album_id'] = $request->id;
+
+        // if ($image = $request->file('image')) {
+        //     $destinationPath = public_path('storage/albums');
+        //     $image_name = date('YmdHis') . "." . $image->getClientOriginalExtension();
+        //     $image->move($destinationPath, $image_name);
+        //     $input['image'] = $image_name;
+        // }
+
+    	Image::create($input);
+
+        return redirect()->back() 
+        ->withSuccess('New Image is added successfully.');
     }
 }

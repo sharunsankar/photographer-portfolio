@@ -30,6 +30,10 @@
                             <a href="{{ route('albums.show', $album->id) }}" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
 
                             @can('edit-album')
+                                <a href="{{ route('albums.addImage', $album->id) }}" class="btn btn-info btn-sm"><i class="bi bi-file-earmark-plus"></i> Add Images</a>
+                            @endcan
+
+                            @can('edit-album')
                                 <a href="{{ route('albums.edit', $album->id) }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>
                             @endcan
 

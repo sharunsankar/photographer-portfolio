@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_album')
 
 @section('content')
 
@@ -20,7 +20,7 @@
                     @method("PUT")
 
                     <div class="mb-3 row">
-                        <label for="name" class="col-md-4 col-form-label text-md-end text-start">Cateory</label>
+                        <label for="category_id" class="col-md-4 col-form-label text-md-end text-start">Cateory</label>
                         <div class="col-md-6">
                             <select class="form-control @error('category_id') is-invalid @enderror" id="category_id" name="category_id"> 
                                 <option value="">Select Category</option>
@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="mb-3 row">
-                        <label for="name" class="col-md-4 col-form-label text-md-end text-start">Title</label>
+                        <label for="title" class="col-md-4 col-form-label text-md-end text-start">Title</label>
                         <div class="col-md-6">
                           <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ $album->title }}">
                             @if ($errors->has('title'))
@@ -51,6 +51,16 @@
                             <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description">{{ $album->description }}</textarea>
                             @if ($errors->has('description'))
                                 <span class="text-danger">{{ $errors->first('description') }}</span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="tags" class="col-md-4 col-form-label text-md-end text-start">Tags</label>
+                        <div class="col-md-6">
+                            <input type="text" data-role="tagsinput" name="tags" class="form-control tags">
+                            @if ($errors->has('tags'))
+                                <span class="text-danger">{{ $errors->first('tags') }}</span>
                             @endif
                         </div>
                     </div>

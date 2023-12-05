@@ -30,6 +30,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/albums/{id}/add-image', [App\Http\Controllers\AlbumController::class, 'addImage'])->name('albums.addImage');
+Route::post('/albums/store-image/{id}', [App\Http\Controllers\AlbumController::class, 'storeImage'])->name('albums.storeImage');
 Route::resources([
     'roles' => RoleController::class,
     'users' => UserController::class,
